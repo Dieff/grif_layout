@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Box from './components/content/Box';
+
+import Layout from './components/layout/Layout';
+import Item from './components/layout/Item';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="App" style={{ width: '100vh', height: '100vh' }}>
+        <Layout gap={'1rem'}  columns={[1/10, 1/2, 3/10]}>
+          <Item rs={2} cs={1}>
+            <Box color="blue" />
+          </Item>
+          <Item rs={1} cs={1} ce={3}>
+            <Box color="orange" />
+          </Item>
+          <Item cs={3}>
+            <Box color="purple" />
+          </Item>
+        </Layout>
       </div>
     );
   }
