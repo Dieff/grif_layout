@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { margin, padding } from './commonStyleSets';
+
 const Item = (props) => {
-  const gridProps = {};
+  const gridProps = {
+    ...margin(props),
+  };
   if (props.rs) {
     gridProps.gridRowStart = props.rs;
   }
@@ -24,7 +28,15 @@ const Item = (props) => {
         ...gridProps,
       }}
     >
-      {props.children}
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          ...padding(props),
+        }}
+      >
+        {props.children}
+      </div>
     </div>
   );
 };
@@ -34,6 +46,8 @@ Item.propTypes = {
   re: PropTypes.number,
   cs: PropTypes.number,
   ce: PropTypes.number,
+  ...margin.propTypes,
+  ...padding.propTypes,
 };
 
 

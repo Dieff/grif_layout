@@ -7,16 +7,22 @@ import Item from './components/layout/Item';
 class App extends Component {
   render() {
     return (
-      <div className="App" style={{ width: '100vh', height: '100vh' }}>
+      <div className="App" style={{ width: '100vw', height: '100vh' }}>
         <Layout gap={'1rem'}  columns={[1/10, 1/2, 3/10]}>
           <Item rs={2} cs={1}>
             <Box color="blue" />
           </Item>
-          <Item rs={1} cs={1} ce={3}>
+          <Item cs={1} ce={3}>
             <Box color="orange" />
           </Item>
-          <Item cs={3}>
+          <Item cs={3} pl={'1rem'}>
             <Box color="purple" />
+          </Item>
+          <Item rs={2} cs={3}>
+            <Box color="green" />
+          </Item>
+          <Item rs={2} cs={2} mt={3}>
+            <Box color="brown" />
           </Item>
         </Layout>
       </div>

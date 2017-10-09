@@ -1,34 +1,69 @@
 import PropTypes from 'prop-types';
 
-const margin = (props) => {
-  const addStyles = {};
-  Object.keys(props).forEach(key => {
-    const val = props[key];
-    switch (key) {
-    case 'mt':
-      addStyles.marginTop = val;
-      break;
-    case 'mb':
-      addStyles.marginBottom = val;
-      break;
-    case 'ml':
-      addStyles.marginLeft = val;
-      break;
-    case 'mr':
-      addStyles.marginRight = val;
-    }
+//window.matchMedia
 
-  });
+const styleCreatorFactory = (preStylePropertiesMap) => {
+  const stylePropertiesMap = new Map(
+    [...preStylePropertiesMap.keys()].map(
+      propName => [
+        propName,
+        ((propDef) => {
+          const newPropDef = {};
+          if (!('name' in propDef)) {
+            console.warn('no prop name');
+          } else {
+            newPropDef.name = propDef.name;
+          }
+          newPropDef.validator = ('validator' in propDef) ? 
+            propDef.validator : (f, g) => f;
+          newPropDef.type = ('type' in propDef) ? 
+            propDef.type : PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
+          
+          return newPropDef;
+        })(preStylePropertiesMap.get(propName))
+      ]
+    )
+  );
+
+  const creator = (componentProps) => {
+    const styles = {};
+    Object.keys(componentProps).filter(
+      key => stylePropertiesMap.has(key)
+    ).forEach(
+      key => {
+        const styleProp = stylePropertiesMap.get(key);
+        styles[styleProp.name] = styleProp.validator(componentProps[key], componentProps);
+      }
+    );
+    return styles;
+  };
+
+  creator.propTypes = {};
+  [...stylePropertiesMap.keys()].forEach(
+    key => { creator.propTypes[key] = stylePropertiesMap.get(key).type; }
+  );
+
+  return creator;
 };
 
-margin.propTypes = {
+const padding = styleCreatorFactory(
+  new Map([
+    ['pl', { name: 'paddingLeft' }],
+    ['pr', { name: 'paddingRight' }],
+    ['pt', { name: 'paddingTop' }],
+    ['pb', { name: 'paddingBottom' }],
+    ['p', { name: 'padding' }],
+  ])
+);
 
-};
+const margin = styleCreatorFactory(
+  new Map([
+    ['m', { name: 'margin' }],
+    ['ml', { name: 'marginLeft' }],
+    ['mr', { name: 'marginRight' }],
+    ['mb', { name: 'marginBottom' }],
+    ['mt', { name: 'marginTop' }],
+  ])
+);
 
-const padding = () => {
-
-};
-
-padding.propTypes = {
-
-};
+export { margin, padding };

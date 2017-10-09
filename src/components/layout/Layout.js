@@ -14,10 +14,12 @@ const makeTemplate = (temp) => {
 };
 
 const Layout = (props) => {
-  const gridProps = { display: 'grid' };
-  gridProps.gridGap = props.gap;
-  gridProps.justifyItems = props.rowAlign;
-  gridProps.alignItems = props.colAlign;
+  const gridProps = {
+    display: 'grid',
+    gridGap: props.gap,
+    justifyItems: props.rowAlign,
+    alignItems: props.colAlign,
+  };
   if (props.rows) {
     gridProps.gridTemplateRows = makeTemplate(props.rows); 
   }
