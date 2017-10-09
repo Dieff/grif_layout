@@ -42,12 +42,12 @@ const Item = (props) => {
 };
 
 Item.propTypes = {
-  rs: PropTypes.number,
-  re: PropTypes.number,
-  cs: PropTypes.number,
-  ce: PropTypes.number,
   ...margin.propTypes,
   ...padding.propTypes,
+  ce: PropTypes.number,
+  cs: PropTypes.number,
+  re: PropTypes.number,
+  rs: PropTypes.number,
 };
 
 

@@ -3,7 +3,7 @@ module.exports = {
         "browser": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "extends": ["eslint:recommended", "plugin:react/all"],
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -19,6 +19,14 @@ module.exports = {
             "error",
             2
         ],
+        "react/jsx-indent": [
+            2,
+            2
+        ],
+        "react/jsx-indent-props": [
+            2,
+            2
+        ],
         "linebreak-style": [
             "error",
             "unix"
@@ -30,6 +38,7 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     }
 };

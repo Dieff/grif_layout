@@ -21,7 +21,7 @@ class App extends Component {
           <Item rs={2} cs={3}>
             <Box color="green" />
           </Item>
-          <Item rs={2} cs={2} mt={3}>
+          <Item rs={2} cs={2} pt={'1rem'}>
             <Box color="brown" />
           </Item>
         </Layout>

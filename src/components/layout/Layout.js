@@ -31,33 +31,41 @@ const Layout = (props) => {
     if (child.props)
   })*/
   return (
-    <div style={{
-      ...gridProps,
-      width: '100%',
-      height: '100%',
-    }}>
+    <div
+      style={{
+        ...gridProps,
+        width: '100%',
+        height: '100%',
+      }}
+    >
       {props.children}
     </div>
   );
 };
 
 Layout.propTypes = {
-  rows: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
-    PropTypes.number,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
   ]),
+  colAlign: PropTypes.string,
   columns: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
     PropTypes.number,
   ]),
   gap: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   rowAlign: PropTypes.string,
-  colAlign: PropTypes.string,
+  rows: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+    PropTypes.number,
+  ]),
 };
 
 Layout.defaultProps = {
+  children: <div />,
   gap: '0px',
   rows: 2,
+  columns: 1,
   rowAlign: 'auto',
   colAlign: 'auto',
 };
