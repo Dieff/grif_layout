@@ -5,7 +5,8 @@ const Box = (props) => (
     minWidth: '100%',
     minHeight: '100%',
     backgroundColor: props.color,
-  }}>
+  }}
+  >
     {props.children}
   </div>
 );
