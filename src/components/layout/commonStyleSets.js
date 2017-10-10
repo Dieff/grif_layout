@@ -83,4 +83,11 @@ const selfAlignment = styleCreatorFactory(
   ])
 );
 
-export { margin, padding, selfAlignment };
+const allAlignment = styleCreatorFactory(
+  new Map([
+    ['xAlign', { name: 'justifyItems', type: PropTypes.string, validator: alignmentValidator}],
+    ['yAlign', { name: 'alignItems', type: PropTypes.string, validator: alignmentValidator }],
+  ])
+);
+
+export { margin, padding, selfAlignment, allAlignment };

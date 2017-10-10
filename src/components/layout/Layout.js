@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { allAlignment } from './commonStyleSets';
+
 const makeTemplate = (temp) => {
   let a = [];
   if (typeof temp === 'number'){
@@ -17,8 +19,7 @@ const Layout = (props) => {
   const gridProps = {
     display: 'grid',
     gridGap: props.gap,
-    justifyItems: props.rowAlign,
-    alignItems: props.colAlign,
+    ...allAlignment(props),
   };
   if (props.rows) {
     gridProps.gridTemplateRows = makeTemplate(props.rows); 
@@ -48,17 +49,16 @@ Layout.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]),
-  colAlign: PropTypes.string,
   columns: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
     PropTypes.number,
   ]),
   gap: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  rowAlign: PropTypes.string,
   rows: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
     PropTypes.number,
   ]),
+  ...allAlignment.propTypes,
 };
 
 Layout.defaultProps = {
@@ -66,8 +66,6 @@ Layout.defaultProps = {
   gap: '0px',
   rows: 2,
   columns: 1,
-  rowAlign: 'auto',
-  colAlign: 'auto',
 };
 
 export default Layout;
