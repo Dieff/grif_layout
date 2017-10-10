@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const styleCreatorFactory = (preStylePropertiesMap) => {
   const stylePropertiesMap = new Map(
     [...preStylePropertiesMap.keys()].map(
