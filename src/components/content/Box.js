@@ -6,8 +6,12 @@ const Box = (props) => (
     minHeight: '100%',
     backgroundColor: props.color,
   }}>
+    {props.children}
   </div>
 );
 
+Box.defaultProps = {
+  children: <div />,
+};
 
 export default Box;

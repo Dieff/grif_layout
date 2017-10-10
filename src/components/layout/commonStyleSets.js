@@ -66,4 +66,21 @@ const margin = styleCreatorFactory(
   ])
 );
 
-export { margin, padding };
+const alignmentValidator = (property) => {
+  if ((property === 'start')
+    || (property === 'center')
+    || (property === 'end')
+  ) {
+    return property;
+  }
+  return 'stretch';
+};
+
+const selfAlignment = styleCreatorFactory(
+  new Map([
+    ['xAlign', { name: 'justifySelf', type: PropTypes.string, validator: alignmentValidator}],
+    ['yAlign', { name: 'alignSelf', type: PropTypes.string, validator: alignmentValidator }],
+  ])
+);
+
+export { margin, padding, selfAlignment };

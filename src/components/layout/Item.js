@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { margin, padding } from './commonStyleSets';
+import { margin, padding, selfAlignment } from './commonStyleSets';
 
 const Item = (props) => {
   const gridProps = {
     ...margin(props),
+    ...selfAlignment(props),
   };
   if (props.rs) {
     gridProps.gridRowStart = props.rs;
@@ -44,11 +45,11 @@ const Item = (props) => {
 Item.propTypes = {
   ...margin.propTypes,
   ...padding.propTypes,
+  ...selfAlignment.propTypes,
   ce: PropTypes.number,
   cs: PropTypes.number,
   re: PropTypes.number,
   rs: PropTypes.number,
 };
-
 
 export default Item;
