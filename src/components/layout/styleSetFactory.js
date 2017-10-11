@@ -1,5 +1,15 @@
 import PropTypes from 'prop-types';
 
+class StyleCreatorPropertyException {
+  constructor(propertyName, message = '') {
+    this.property = propertyName;
+    this.message = message;
+  }
+  toString() {
+    return `${this.property}: ${this.message}`;
+  }
+}
+
 const styleCreatorFactory = (preStylePropertiesMap) => {
   const stylePropertiesMap = new Map(
     [...preStylePropertiesMap.keys()].map(
@@ -8,7 +18,10 @@ const styleCreatorFactory = (preStylePropertiesMap) => {
         ((propDef) => {
           const newPropDef = {};
           if (!('name' in propDef)) {
-            console.warn('no prop name');
+            throw new StyleCreatorPropertyException(
+              'name',
+              'property "name" required when defining a style set'
+            );
           } else {
             newPropDef.name = propDef.name;
           }
@@ -16,7 +29,7 @@ const styleCreatorFactory = (preStylePropertiesMap) => {
             propDef.validator : (f, g) => f;
           newPropDef.type = ('type' in propDef) ? 
             propDef.type : PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
-          
+          //TODO add defaults 
           return newPropDef;
         })(preStylePropertiesMap.get(propName))
       ]
