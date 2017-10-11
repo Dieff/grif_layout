@@ -47,4 +47,51 @@ const allAlignment = styleCreatorFactory(
   ])
 );
 
-export { margin, padding, selfAlignment, allAlignment };
+const gridChildren = styleCreatorFactory(
+  new Map([
+    ['ce', { name: 'gridColumnEnd' }],
+    ['cs', { name: 'gridColumnStart' }],
+    ['re', { name: 'gridRowEnd' }],
+    ['rs', { name: 'gridRowStart' }],
+  ])
+);
+
+const makeGridTemplate = (temp) => {
+  let a = [];
+  if (typeof temp === 'number'){
+    a = `repeat(${temp}, 1fr`;
+  } else {
+    a = temp.map(
+      row => (typeof row === 'number') ? `${row*100}fr ` : row
+    ).reduce((sum, val) => `${sum} ${val}`, '');
+  }
+  return a;
+};
+
+const gridTemplate = styleCreatorFactory(
+  new Map([
+    [ 'rows', {
+      name: 'gridTemplateRows',
+      type: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+      validator: makeGridTemplate,
+    }],
+    ['columns', {
+      name: 'gridTemplateColumns',
+      type: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+      validator: makeGridTemplate,
+    }],
+    ['gap', {
+      name: 'gridGap',
+      type: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    }]
+  ])
+);
+
+export {
+  margin,
+  padding,
+  selfAlignment,
+  allAlignment,
+  gridChildren,
+  gridTemplate,
+};

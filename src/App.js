@@ -26,7 +26,14 @@ const App = () => {
           p="1rem"
         >
           <Box color="orange">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut pulvinar massa. Praesent ultricies, elit quis convallis ultrices, enim nibh dignissim mi, at tempus ante lacus in lorem. Sed velit mauris, pharetra sed magna id, molestie porta tortor. Vestibulum consequat arcu non volutpat imperdiet. Aenean et magna congue orci mattis tincidunt eu non eros. Nunc nec libero in sem malesuada mollis. Nam dapibus justo purus, sed pulvinar velit ultrices quis.
+            <div style={{padding: '1rem'}}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Cras ut pulvinar massa. Praesent ultricies, elit quis convallis ultrices,
+              enim nibh dignissim mi, at tempus ante lacus in lorem. Sed velit mauris,
+              pharetra sed magna id, molestie porta tortor. Vestibulum consequat arcu non
+              volutpat imperdiet. Aenean et magna congue orci mattis tincidunt eu non eros.
+              Nunc nec libero in sem malesuada mollis. Nam dapibus justo purus, sed pulvinar velit ultrices quis.
+            </div>
           </Box>
         </Item>
         <Item
