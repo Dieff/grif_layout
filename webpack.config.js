@@ -1,4 +1,6 @@
 var path = require('path');
+const BabelWebpackPlugin = require('babel-minify-webpack-plugin');
+
 module.exports = {
   entry: './src/exports.js',
   output: {
@@ -23,5 +25,8 @@ module.exports = {
   },
   externals: {
     'react': 'commonjs react'
-  }
+  },
+  plugins: [
+    new BabelWebpackPlugin(),
+  ]
 };

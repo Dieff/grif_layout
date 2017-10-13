@@ -24,9 +24,6 @@ class PossibleProperty {
   get isDefined() {
     return this._isDefined;
   }
-  set isDefined(d) {
-    this._isDefined = d;
-  }
 }
 
 const styleCreatorFactory = (preStylePropertiesMap) => {
