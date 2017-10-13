@@ -10,6 +10,25 @@ class StyleCreatorPropertyException {
   }
 }
 
+class PossibleProperty {
+  constructor(isDefined = false) {
+    this._isDefined = isDefined;
+    this._value = false;
+  }
+  get value() {
+    return this._value;
+  }
+  set value(v) {
+    this._value = v;
+  }
+  get isDefined() {
+    return this._isDefined;
+  }
+  set isDefined(d) {
+    this._isDefined = d;
+  }
+}
+
 const styleCreatorFactory = (preStylePropertiesMap) => {
   const stylePropertiesMap = new Map(
     [...preStylePropertiesMap.keys()].map(
@@ -26,10 +45,13 @@ const styleCreatorFactory = (preStylePropertiesMap) => {
             newPropDef.name = propDef.name;
           }
           newPropDef.validator = ('validator' in propDef) ? 
-            propDef.validator : (f, g) => f;
+            propDef.validator : (f) => f;
           newPropDef.type = ('type' in propDef) ? 
             propDef.type : PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
-          //TODO add defaults 
+          newPropDef.default = new PossibleProperty('default' in propDef);
+          if (newPropDef.default.isDefined) {
+            newPropDef.default.value = propDef.default;
+          }
           return newPropDef;
         })(preStylePropertiesMap.get(propName))
       ]
@@ -49,9 +71,22 @@ const styleCreatorFactory = (preStylePropertiesMap) => {
     return styles;
   };
 
-  creator.propTypes = {};
-  [...stylePropertiesMap.keys()].forEach(
-    key => { creator.propTypes[key] = stylePropertiesMap.get(key).type; }
+  const keys = [...stylePropertiesMap.keys()];
+
+  creator.propTypes = keys.reduce(
+    (sum, key) => {
+      sum[key] = stylePropertiesMap.get(key).type;
+      return sum;
+    }, {}
+  );
+
+  creator.defaultProps = keys.filter(
+    key => stylePropertiesMap.get(key).default.isDefined
+  ).reduce(
+    (sum, key) => {
+      sum[key] = stylePropertiesMap.get(key).default.value;
+      return sum;
+    }, {}
   );
 
   return creator;

@@ -33,9 +33,7 @@ Layout.propTypes = {
 
 Layout.defaultProps = {
   children: <div />,
-  gap: '0px',
-  rows: 2,
-  columns: 1,
+  ...gridTemplate.defaultProps,
 };
 
 export default Layout;

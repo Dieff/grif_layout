@@ -72,17 +72,23 @@ const gridTemplate = styleCreatorFactory(
   new Map([
     [ 'rows', {
       name: 'gridTemplateRows',
-      type: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+      type: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+        PropTypes.number
+      ]),
       validator: makeGridTemplate,
+      default: 2,
     }],
     ['columns', {
       name: 'gridTemplateColumns',
       type: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
       validator: makeGridTemplate,
+      default: 1,
     }],
     ['gap', {
       name: 'gridGap',
       type: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      default: '0px',
     }]
   ])
 );
