@@ -30,4 +30,4 @@ There are two componenets, Layout and Item. Layout is designed to take multiple 
 
 ## License
 
-The project is licensed with the [WTPFL](http://www.wtfpl.net/) license, a copy of which is included in this repository. See copying.txt for more information.
+The project is licensed with the [WTFPL](http://www.wtfpl.net/) license, a copy of which is included in this repository. See copying.txt for more information.
