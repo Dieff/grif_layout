@@ -5,6 +5,10 @@
   "license": "WTFPL",
   "keywords": ["react", "grid", "layout", "components", "css-grid"],
   "url": "https://github.com/Dieff/grif_layout",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dieff/grif_layout"
+  },
   "dependencies": {
     "global": "^4.3.2",
     "prop-types": "^15.6.0",
