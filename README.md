@@ -95,51 +95,51 @@ There are two componenets, Layout and Item. Layout is designed to take multiple 
 
 This component holds `Item` components. It sepcifies the grid which the `Item` components will fill. The properties are below.
 
-..* `columns` (number | array of (number | string) ): Creates the columns of your grid. A single number will create that many evenly spaced columns. For more
+  * `columns` (number | array of (number | string) ): Creates the columns of your grid. A single number will create that many evenly spaced columns. For more
 fine control, you can pass an array of numbers. This will make columns proportional to the array contents in the order in which they appear. For example, setting
 `column={[1, 2]}` will create a grid with two columns, the second of which is twice the width of the first. You can also pass absolute css widths. Will default to `1`.
 
-..* `rows` (number | array of numbers): Creates the rows of your grid. Works much like the columns property. Will default to `1`.
+  * `rows` (number | array of numbers): Creates the rows of your grid. Works much like the columns property. Will default to `1`.
 
-..* `gap` (string | number): The gap between different items in the grid. Takes a css width like `2rem` or a number of pixels.
+  * `gap` (string | number): The gap between different items in the grid. Takes a css width like `2rem` or a number of pixels.
 
-..* `xAlign` (string): How to justify content on the x axis. Possible values are the same as the values for the css properties `align-content` and `justify-content`. Useful options include `center`, `left`, `right`, `stretch`, or `space-between`.
+  * `xAlign` (string): How to justify content on the x axis. Possible values are the same as the values for the css properties `align-content` and `justify-content`. Useful options include `center`, `left`, `right`, `stretch`, or `space-between`.
 
-..* `yAlign` (string): How to justify content on the y axis. Works the same way as `xAlign`.
+  * `yAlign` (string): How to justify content on the y axis. Works the same way as `xAlign`.
 
 **Item**
 
 This component can hold different content as its children. The properties are below.
 
-..* `cs` (number): The grid line to start the item along the x axis. Grid lines start at 1, which is the furthest right.
+  * `cs` (number): The grid line to start the item along the x axis. Grid lines start at 1, which is the furthest right.
 
-..* `ce` (number): The grid line to end the item along the x axis.
+  * `ce` (number): The grid line to end the item along the x axis.
 
-..* `rs` (number): The grid line the start the item along the y axis.
+  * `rs` (number): The grid line the start the item along the y axis.
 
-..* `re` (number): The grid line to end the item along the y axis.
+  * `re` (number): The grid line to end the item along the y axis.
 
-..* `m` (string | number): The margin of the child content. If set to greater than the value of the `gap` on the parent layout, it will cause the item
+  * `m` (string | number): The margin of the child content. If set to greater than the value of the `gap` on the parent layout, it will cause the item
 to be drawn over other child items.
 
-..* `ml` (string | number): The left margin.
+  * `ml` (string | number): The left margin.
 
-..* `mr` (string | number): The right margin.
+  * `mr` (string | number): The right margin.
 
-..* `mt` (string | number): The top margin.
+  * `mt` (string | number): The top margin.
 
-..* `mb` (string | number): The bottom margin.
+  * `mb` (string | number): The bottom margin.
 
-..* `p` (string | number): The padding of the child content. Will not extend past the limits of its row or column. Takes a css length like `1rem` or a
+  * `p` (string | number): The padding of the child content. Will not extend past the limits of its row or column. Takes a css length like `1rem` or a
  number of pixels.
 
- ..* `pt` (string | number): The top padding.
+  * `pt` (string | number): The top padding.
 
- ..* `pb` (string | number): The bottom padding.
+  * `pb` (string | number): The bottom padding.
 
- ..* `pl` (string | number): The left padding.
+  * `pl` (string | number): The left padding.
 
- ..* `pr` (string | number): The right padding.
+  * `pr` (string | number): The right padding.
 
 
 
